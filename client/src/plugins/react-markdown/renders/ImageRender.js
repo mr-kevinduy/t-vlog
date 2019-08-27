@@ -19,7 +19,7 @@ class ImageRender extends React.Component {
         <div className="description">{title}</div>
 
         <LazyLoad height={height || null}>
-        <LegitImage src={src} alt={alt} />
+          <LegitImage src={src} alt={alt} speed="1" />
         </LazyLoad>
         </div>
       );

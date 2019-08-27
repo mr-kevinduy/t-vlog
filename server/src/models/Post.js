@@ -1,9 +1,22 @@
 import mongoose from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
-import { servicesConfig } from '../config';
 
 const schema = new mongoose.Schema({
-  title: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
+  title: {
+    type: String,
+    unique: true,
+    required: [true, "can't be blank"],
+    validate: [
+      {
+        validator: v => (v.length <= 200),
+        message: props => `Invalid: "${props.value}" is too large, please fill title <= 200 chars)`
+      },
+      {
+        validator: v => (v !== 'kevin'),
+        message: props => `Invalid: "${props.value}"" is private, please choose other title.`
+      }
+    ],
+    index: true
+  },
   content: String,
   image: String
 }, { timestamps: true });

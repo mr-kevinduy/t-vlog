@@ -38,7 +38,8 @@
     "react-markdown": "^4.1.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "tailwindcss": "^1.1.2"
+    "tailwindcss": "^1.1.2",
+    "validator": "^11.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -64,5 +65,5 @@
     "gulp-nodemon": "^2.4.2",
     "gulp-run": "^1.7.1"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:8000/"
 }

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  app:
+    image: node:lts
+    tty: true
+    restart: always
+    volumes:
+      - ./:/app
+    working_dir: /app
+    ports:
+      - "3000:3000"
+      - "8000:8000"
+      - "3001:3001"
+      - "8080:8080"
+    links:
+      - db
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - .docker/db:/data/db

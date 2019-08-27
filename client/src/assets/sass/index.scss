@@ -1,0 +1,11 @@
+// Import vendor
+// @import '~bootstrap/scss/bootstrap';
+@import '~tailwindcss/dist/tailwind.css';
+
+// Import pre app
+// @import 'override-bootstrap';
+
+// Import app
+@import 'editor-style';
+@import 'app';
+@import 'custom';

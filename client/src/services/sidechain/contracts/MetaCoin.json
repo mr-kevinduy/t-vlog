@@ -1,0 +1,330 @@
+{
+  "contractName": "MetaCoin",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b506000808190555060358060246000396000f3006080604052600080fd00a165627a7a7230582080bd19e41e3d0763a5d9bcdbfa1ef7b448544b76af48d132e1f3b3c08d4dd8870029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a7230582080bd19e41e3d0763a5d9bcdbfa1ef7b448544b76af48d132e1f3b3c08d4dd8870029",
+  "sourceMap": "27:78:2:-;;;63:40;8:9:-1;5:2;;;30:1;27;20:12;5:2;63:40:2;97:1;90:4;:8;;;;27:78;;;;;;",
+  "deployedSourceMap": "27:78:2:-;;;;;",
+  "source": "pragma solidity ^0.4.23;\n\n\ncontract MetaCoin {\n  uint coin;\n\n  constructor() public {\n    coin = 0;\n  }\n}\n",
+  "sourcePath": "/app/dappchain/contracts/MetaCoin.sol",
+  "ast": {
+    "absolutePath": "/app/dappchain/contracts/MetaCoin.sol",
+    "exportedSymbols": {
+      "MetaCoin": [
+        321
+      ]
+    },
+    "id": 322,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 310,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 321,
+        "linearizedBaseContracts": [
+          321
+        ],
+        "name": "MetaCoin",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 312,
+            "name": "coin",
+            "nodeType": "VariableDeclaration",
+            "scope": 321,
+            "src": "49:9:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 311,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "49:4:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 319,
+              "nodeType": "Block",
+              "src": "84:19:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 317,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 315,
+                      "name": "coin",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 312,
+                      "src": "90:4:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 316,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "97:1:2",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "90:8:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 318,
+                  "nodeType": "ExpressionStatement",
+                  "src": "90:8:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 320,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 313,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "74:2:2"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 314,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "84:0:2"
+            },
+            "scope": 321,
+            "src": "63:40:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 322,
+        "src": "27:78:2"
+      }
+    ],
+    "src": "0:106:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/app/dappchain/contracts/MetaCoin.sol",
+    "exportedSymbols": {
+      "MetaCoin": [
+        321
+      ]
+    },
+    "id": 322,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 310,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 321,
+        "linearizedBaseContracts": [
+          321
+        ],
+        "name": "MetaCoin",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 312,
+            "name": "coin",
+            "nodeType": "VariableDeclaration",
+            "scope": 321,
+            "src": "49:9:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 311,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "49:4:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 319,
+              "nodeType": "Block",
+              "src": "84:19:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 317,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 315,
+                      "name": "coin",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 312,
+                      "src": "90:4:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 316,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "97:1:2",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "90:8:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 318,
+                  "nodeType": "ExpressionStatement",
+                  "src": "90:8:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 320,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 313,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "74:2:2"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 314,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "84:0:2"
+            },
+            "scope": 321,
+            "src": "63:40:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 322,
+        "src": "27:78:2"
+      }
+    ],
+    "src": "0:106:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-12-06T16:32:20.997Z"
+}

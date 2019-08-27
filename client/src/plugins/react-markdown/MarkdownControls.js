@@ -17,47 +17,45 @@ class MarkdownControls extends React.PureComponent {
 
     return (
       <div className="markdown-controls">
-        <form className="pure-form pure-form-inline">
-          <fieldset>
-            <legend>HTML mode:</legend>
+        <fieldset>
+          <legend>HTML mode:</legend>
 
-            <label htmlFor="raw-html" className="pure-checkbox">
-              Raw&nbsp;
-              <input
-                id="raw-html"
-                name="html-mode"
-                type="radio"
-                value="raw"
-                checked={rawChecked}
-                onChange={this.handleChange}
-              />
-            </label>
+          <label htmlFor="raw-html" className="pure-checkbox">
+            Raw&nbsp;
+            <input
+              id="raw-html"
+              name="html-mode"
+              type="radio"
+              value="raw"
+              checked={rawChecked}
+              onChange={this.handleChange}
+            />
+          </label>
 
-            <label htmlFor="escape-html" className="pure-checkbox">
-              Escape&nbsp;
-              <input
-                id="escape-html"
-                name="html-mode"
-                type="radio"
-                value="escape"
-                checked={escapeChecked}
-                onChange={this.handleChange}
-              />
-            </label>
+          <label htmlFor="escape-html" className="pure-checkbox">
+            Escape&nbsp;
+            <input
+              id="escape-html"
+              name="html-mode"
+              type="radio"
+              value="escape"
+              checked={escapeChecked}
+              onChange={this.handleChange}
+            />
+          </label>
 
-            <label htmlFor="skip-html" className="pure-checkbox">
-              Skip&nbsp;
-              <input
-                id="skip-html"
-                name="html-mode"
-                type="radio"
-                value="skip"
-                checked={skipChecked}
-                onChange={this.handleChange}
-              />
-            </label>
-          </fieldset>
-        </form>
+          <label htmlFor="skip-html" className="pure-checkbox">
+            Skip&nbsp;
+            <input
+              id="skip-html"
+              name="html-mode"
+              type="radio"
+              value="skip"
+              checked={skipChecked}
+              onChange={this.handleChange}
+            />
+          </label>
+        </fieldset>
       </div>
     );
   }

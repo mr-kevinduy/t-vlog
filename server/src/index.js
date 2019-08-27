@@ -9,7 +9,11 @@ import routes from './routes';
 const isProduction = appConfig.env === 'production';
 
 // Connect db
-mongoose.connect(`${dbConfig.driver}://${dbConfig.url}:${dbConfig.port}/${dbConfig.name}`, { useNewUrlParser: true });
+mongoose.connect(`${dbConfig.driver}://${dbConfig.url}:${dbConfig.port}/${dbConfig.name}`, {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+});
 
 if (!isProduction) {
   mongoose.set('debug', true);

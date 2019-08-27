@@ -63,7 +63,7 @@ class CodeMirrorEditor extends React.Component {
     }
 
     if (this.props.onChange) {
-      this.props.onChange({target: {value: value}});
+      this.props.onChange({target: {value: value, name: 'content'}});
     }
 
     if (this.editor.getValue() !== this.props.value) {
@@ -78,7 +78,7 @@ class CodeMirrorEditor extends React.Component {
   render() {
     const editor = React.createElement('textarea', {
       ref: this.editorRef,
-      name: 'name',
+      name: 'content',
       value: this.props.value,
       readOnly: this.props.readOnly,
       defaultValue: this.props.defaultValue,

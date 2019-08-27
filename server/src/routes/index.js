@@ -6,6 +6,11 @@ import posts from './posts';
 
 const router = express.Router();
 
+router.get('/test', (req, res) => {
+  console.log('test!!!!');
+  res.status(200).json({ payload: 'Test!!' });
+});
+
 router.use('/auth', auth);
 router.use('/users', users);
 router.use('/posts', posts);

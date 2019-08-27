@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import hljs from 'highlightjs';
 
+import 'highlightjs/styles/github.css';
+
 class CodeBlock extends React.Component {
   constructor(props) {
     super(props);

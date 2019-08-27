@@ -4,14 +4,12 @@ import CodeMirrorEditor from './CodeMirrorEditor';
 
 function Editor(props) {
   return (
-    <form className="editor pure-form">
-      <CodeMirrorEditor
-        mode="markdown"
-        theme="t-vlog"
-        value={props.value}
-        onChange={props.onChange}
-      />
-    </form>
+    <CodeMirrorEditor
+      mode="markdown"
+      theme="t-vlog"
+      value={props.value}
+      onChange={props.onChange}
+    />
   )
 }
 

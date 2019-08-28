@@ -1,6 +1,10 @@
 import express from 'express';
+import _ from 'lodash';
+import { validationResult } from 'express-validator/check';
 import Post from '../models/Post';
-import parseErrors from "../utils/parseErrors";
+import parseErrors from '../utils/parseErrors';
+import validate from '../validates/index';
+import postValidate from '../validates/post';
 
 const router = express.Router();
 
@@ -16,8 +20,13 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(400).json({ errors: parseErrors(err.errors) }));
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', validate(postValidate), (req, res, next) => {
   console.log("Posts create!!!", req.body.payload);
+  // console.log("error!!!", next);
+  const errs = validationResult(req);
+  console.log('Router Errs: ', errs.array());
+
+  // if (!_.isEmpty(error)) res.status(400).json({ errors: parseErrors(err.error) });
 
   Post.create(req.body.payload)
     .then(payload => res.json({ payload }))

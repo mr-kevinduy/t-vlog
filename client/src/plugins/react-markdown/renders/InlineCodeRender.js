@@ -4,7 +4,7 @@ import hljs from 'highlightjs';
 
 import 'highlightjs/styles/github.css';
 
-class CodeRender extends React.Component {
+class InlineCodeRender extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,25 +29,21 @@ class CodeRender extends React.Component {
 
   render() {
     return (
-      <div>
-        <pre>
-          <code ref={this.setRef} className={`language-${this.props.language}`}>
-            {this.props.value}
-          </code>
-        </pre>
-      </div>
+      <code ref={this.setRef} className={`language-${this.props.language}`}>
+        {this.props.value}
+      </code>
     )
   }
 }
 
-CodeRender.defaultProps = {
+InlineCodeRender.defaultProps = {
   value: '',
   language: ''
 };
 
-CodeRender.propTypes = {
+InlineCodeRender.propTypes = {
   value: PropTypes.string.isRequired,
   language: PropTypes.string
 };
 
-export default CodeRender;
+export default InlineCodeRender;

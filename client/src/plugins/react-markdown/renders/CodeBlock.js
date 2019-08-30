@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import hljs from 'highlightjs';
+import Lowlight from 'react-lowlight';
+import shallowCompare from 'react-addons-shallow-compare';
+import js from 'highlight.js/lib/languages/javascript';
 
 import 'highlightjs/styles/github.css';
+
+Lowlight.registerLanguage('js', js);
 
 class CodeBlock extends React.Component {
   constructor(props) {
@@ -15,25 +19,17 @@ class CodeBlock extends React.Component {
     this.codeEl = el;
   }
 
-  componentDidMount() {
-    this.highlightCode();
-  }
-
-  componentDidUpdate() {
-    this.highlightCode();
-  }
-
-  highlightCode() {
-    hljs.highlightBlock(this.codeEl);
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {
     return (
-      <pre>
-        <code ref={this.setRef} className={`language-${this.props.language}`}>
-          {this.props.value}
-        </code>
-      </pre>
+      <Lowlight
+        language={this.props.language || 'js'}
+        value={this.props.value}
+        inline={this.props.inline}
+      />
     )
   }
 }
@@ -44,7 +40,8 @@ CodeBlock.defaultProps = {
 
 CodeBlock.propTypes = {
   value: PropTypes.string.isRequired,
-  language: PropTypes.string
+  language: PropTypes.string,
+  inline: PropTypes.bool
 };
 
 export default CodeBlock;

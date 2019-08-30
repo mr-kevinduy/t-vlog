@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import ReactMarkdown from 'react-markdown';
 import MarkdownControls from './MarkdownControls';
 import Editor from './Editor';
 import CodeRender from './renders/CodeRender';
+import InlineCodeRender from './renders/InlineCodeRender';
 import LinkRender from './renders/LinkRender';
 import ImageRender from './renders/ImageRender';
 
@@ -183,6 +185,10 @@ class TVlogEditor extends React.PureComponent {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener('scroll',  _.debounce(this.handleScroll, 50, { maxWait: 50 }));
+  }
+
   handleMarkdownChange = evt => {
     this.setState({content: evt.target.value});
     this.props.onChange(evt);
@@ -192,23 +198,44 @@ class TVlogEditor extends React.PureComponent {
     this.setState({htmlMode: mode});
   }
 
+  handleScroll = () => {
+    const _editor = this._editor.children;
+    const _resultHtml = this._resultHtml.children;
+
+    // var lineHeight = parseFloat(textarea.css('line-height')),
+    //     lineNo, posTo;
+
+    // lineNo = Math.floor(textarea.scrollTop() / lineHeight);
+    // if (!scrollMap) { scrollMap = buildScrollMap(); }
+    // posTo = scrollMap[lineNo];
+
+    var posTo = Math.floor(_editor.scrollTop);
+    console.log("_editor: ", _editor);
+    console.log("_resultHtml: ", _resultHtml);
+    // _resultHtml.scrollIntoView({ blok: "start", behavior: "smooth" });
+
+    // _resultHtml.scrollTop = posTo;
+  }
+
   render() {
     return (
       <div className="t-vlog-poster">
         <div className="editor-pane">
           <MarkdownControls onChange={this.handleControlsChange} mode={this.state.htmlMode} />
 
-          <Editor value={this.state.content} onChange={this.handleMarkdownChange} />
+          <div className="editor-content" ref={a => this._editor = a}>
+            <Editor value={this.state.content} onChange={this.handleMarkdownChange} />
+          </div>
         </div>
 
-        <div className="result-pane">
+        <div className="result-pane" ref={a => this._resultHtml = a}>
           <ReactMarkdown
             className="result"
             source={this.state.content}
             skipHtml={this.state.htmlMode === 'skip'}
             escapeHtml={this.state.htmlMode === 'escape'}
             renderers={{
-              inlineCode: CodeRender,
+              inlineCode: InlineCodeRender,
               code: CodeRender,
               link: LinkRender,
               image: ImageRender,

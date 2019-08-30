@@ -1,6 +1,6 @@
 import express from 'express';
 import _ from 'lodash';
-import { validationResult } from 'express-validator/check';
+import { validationResult } from 'express-validator';
 import Post from '../models/Post';
 import parseErrors from '../utils/parseErrors';
 import validate from '../validates/index';

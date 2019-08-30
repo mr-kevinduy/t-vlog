@@ -44,9 +44,18 @@ class HomePage extends React.Component {
 
   handleChange = e => {
     console.log(e);
+    let { name, value } = e.target;
+
+    // if (value === '`') {
+    //   value = value.replace(/`/g, '\\`');
+    //   console.log('fdf: ', value);
+    // }
+
+    console.log(JSON.stringify(value));
+
     this.setState({
       ...this.state,
-      data: { ...this.state.data, [e.target.name]: e.target.value }
+      data: { ...this.state.data, [name]: value }
     });
   }
 

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { USER_ROLE } from '@/config';
 import {
   registerAuth,
@@ -180,6 +181,18 @@ export const setUserInfo = data => {
   setRefreshToken(data.refresh_token);
   setStorageItem('user_info', JSON.stringify(data.user_info));
 }
+
+/**
+ * setAuthorizationHeader
+ * @param  {any} token
+ */
+export const setAuthorizationHeader = (token = null) => {
+  if (token) {
+    axios.defaults.headers.common.authorization = `Bearer ${token}`;
+  } else {
+    delete axios.defaults.headers.common.authorization;
+  }
+};
 
 /**
  * Set access token

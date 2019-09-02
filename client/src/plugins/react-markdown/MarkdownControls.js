@@ -16,9 +16,9 @@ class MarkdownControls extends React.PureComponent {
     const escapeChecked = this.props.mode === 'escape';
 
     return (
-      <div className="markdown-controls">
+      <div className="tvlog-poster__preview--controls markdown-controls">
         <fieldset>
-          <legend>HTML mode:</legend>
+          <strong>HTML mode:</strong>
 
           <label htmlFor="raw-html" className="pure-checkbox">
             Raw&nbsp;

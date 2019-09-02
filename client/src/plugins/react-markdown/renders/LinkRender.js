@@ -6,7 +6,7 @@ class LinkRender extends React.Component {
   render() {
     if (this.props.href.match(/^(https?:)?\/\//)) {
       return (
-        <a href={this.props.href} target="_blank">
+        <a href={this.props.href} target="_blank" rel="noopener noreferrer">
           {this.props.children} <sup>☁</sup>
         </a>
       );

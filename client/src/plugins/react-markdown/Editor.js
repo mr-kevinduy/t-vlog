@@ -6,7 +6,9 @@ function Editor(props) {
   return (
     <CodeMirrorEditor
       mode="markdown"
-      theme="t-vlog"
+      theme="tvlog"
+      className={props.className}
+      textAreaClassName={props.textAreaClassName}
       value={props.value}
       onChange={props.onChange}
     />

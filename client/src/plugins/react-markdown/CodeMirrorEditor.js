@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CodeMirror from 'codemirror';
+
+import 'codemirror/mode/markdown/markdown';
 import 'codemirror/lib/codemirror.css';
 
 // import 'codemirror/theme/monokai.css';
@@ -86,7 +88,9 @@ class CodeMirrorEditor extends React.Component {
       className: this.props.textAreaClassName
     });
 
-    return React.createElement('div', null, editor);
+    return React.createElement('div', {
+      className: this.props.className
+    }, editor);
   }
 }
 
@@ -94,6 +98,7 @@ CodeMirrorEditor.propTypes = {
   readOnly: PropTypes.bool,
   defaultValue: PropTypes.string,
   textAreaClassName: PropTypes.string,
+  className: PropTypes.string,
   onChange: PropTypes.func,
   forceTextArea: PropTypes.bool,
   value: PropTypes.string

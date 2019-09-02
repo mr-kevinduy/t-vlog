@@ -6,10 +6,10 @@ import logo from '../assets/images/logo.svg';
 class Header extends React.Component {
   render() {
     return (
-      <header className="site-header">
-        <div className="fixed z-100 bg-gray-100 inset-x-0 top-0 border-b-2 border-gray-200 lg:border-b-0 lg:static flex items-center">
+      <header className="site-header bg-gray-200">
+        <div className="fixed z-100 inset-x-0 top-0 lg:static flex items-center">
           <div className="w-full max-w-screen-xl relative mx-auto px-6">
-            <div className="lg:border-b-2 lg:border-gray-200 h-16 flex flex-col justify-center">
+            <div className="h-16 flex flex-col justify-center">
               <div className="flex items-center -mx-6">
                 <div className="lg:w-1/4 xl:w-1/5 pl-6 pr-6">
                   <div className="flex items-center">
@@ -21,7 +21,7 @@ class Header extends React.Component {
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/about" className="nav-link">About</Link>
                   </div>
-                  <div className="hidden lg:flex lg:items-center lg:justify-between xl:w-1/4 px-6">
+                  <div className="hidden lg:flex lg:items-center lg:justify-end xl:w-1/4 px-6">
                     <div className="flex justify-start items-center text-gray-500">
                       <Link to="/login" className="nav-link">Login</Link>
                       <Link to="/register" className="nav-link">Register</Link>

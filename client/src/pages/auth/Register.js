@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Form, Card, Button } from 'react-bootstrap';
-import MainLayout from '../../layouts/MainLayout';
+import AuthLayout from '../../layouts/AuthLayout';
+import Copyright from '../../common/Copyright';
 
 class RegisterPage extends React.Component {
   constructor(props) {
@@ -30,39 +30,53 @@ class RegisterPage extends React.Component {
     if (redirectToLogin) return <Redirect to='/login' />;
 
     return (
-      <MainLayout>
-        <div className="content-page register-page d-flex justify-content-center">
-          <Card style={{ width: '30rem' }}>
-            <Card.Header as="h5">Register</Card.Header>
-            <Card.Body>
-              <Form>
-                <Form.Group controlId="email">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" placeholder="Your email" />
-                </Form.Group>
-
-                <Form.Group controlId="password">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Your password" />
-                </Form.Group>
-
-                <Form.Group controlId="repeatPassword">
-                  <Form.Label>Repeat Password</Form.Label>
-                  <Form.Control type="password" placeholder="Repeat your password" />
-                </Form.Group>
-
-                <Button variant="primary" type="submit" onClick={this.handleRegisrer}>
-                  Register
-                </Button>
-                <span className="mx-2">- OR -</span>
-                <Button variant="primary" type="button" onClick={this.handleLogin}>
-                  Login
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
+      <AuthLayout>
+        <div className="content-page register-page w-full max-w-md">
+          <form className="bg-white shadow-md rounded px-8 py-8 mb-4">
+            <h1 className="mb-10 text-center">Register</h1>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="username">Username</label>
+              <input
+                className="w-full"
+                id="username"
+                type="text"
+                placeholder="Username"
+              />
+            </div>
+            <div className="mb-6">
+              <label className="form-label" htmlFor="password">Password</label>
+              <input
+                className="w-full"
+                id="password"
+                type="password"
+                placeholder="******************"
+              />
+              <p className="text-red-500 text-xs italic">Please choose a password.</p>
+            </div>
+            <div className="mb-6">
+              <label className="form-label" htmlFor="repeatPassword">Repeat Password</label>
+              <input
+                className="w-full"
+                id="repeatPassword"
+                type="password"
+                placeholder="******************"
+              />
+              <p className="text-red-500 text-xs italic">Please choose a password.</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <button
+                className="is-primary"
+                type="button"
+                onClick={this.handleRegisrer}
+              >Register</button>
+              <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/">
+                Forgot Password?
+              </a>
+            </div>
+          </form>
+          <Copyright className="text-center text-xs" />
         </div>
-      </MainLayout>
+      </AuthLayout>
     );
   }
 }

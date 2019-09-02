@@ -1,22 +1,49 @@
 import React from 'react';
+import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { Form, Card, Button } from 'react-bootstrap';
-import MainLayout from '../../layouts/MainLayout';
+import AuthLayout from '../../layouts/AuthLayout';
+import Copyright from '../../common/Copyright';
 
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      form: {
+        username: '',
+        email: '',
+        password: ''
+      },
       redirectToRegister: false
     };
   }
 
-  handleLogin = (e) => {
-    e.preventDefault();
+  handleChange = e => {
+    let { name, value } = e.target;
+
+    this.setState({
+      ...this.state,
+      form: { ...this.state.form, [name]: value }
+    });
   }
 
-  handleRegister = (e) => {
+  handleLogin = e => {
+    e.preventDefault();
+
+    const { username, email, password } = this.state.form;
+
+    axios
+      .post('/api/v1/auth/login', { user: { username, email, password } })
+      .then(res => {
+        console.log('Loged: ', this.props.history);
+        // Set token to local: setUserInfo
+        // Set setAuthorizationHeader: /services/auth.service.js
+        this.props.history.push('/');
+        console.log('Loged success!!', res);
+      });
+  }
+
+  handleRegister = e => {
     e.preventDefault();
 
     this.setState({ redirectToRegister: true });
@@ -28,34 +55,58 @@ class LoginPage extends React.Component {
     if (redirectToRegister) return <Redirect to='/register' />;
 
     return (
-      <MainLayout>
-        <div className="content-page login-page d-flex justify-content-center">
-          <Card style={{ width: '30rem' }}>
-            <Card.Header as="h5">Login</Card.Header>
-            <Card.Body>
-              <Form>
-                <Form.Group controlId="formGridEmail">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
-                </Form.Group>
-
-                <Form.Group controlId="formGridPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-
-                <Button variant="primary" type="submit" onClick={this.handleLogin}>
-                  Login
-                </Button>
-                <span className="mx-2">- OR -</span>
-                <Button variant="primary" type="button" onClick={this.handleRegister}>
-                  Register
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
+      <AuthLayout>
+        <div className="content-page login-page w-full max-w-md">
+          <form className="bg-white shadow-md rounded px-8 py-8 mb-4">
+            <h1 className="mb-10 text-center">Login to website</h1>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="username">Username</label>
+              <input
+                className="w-full"
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Your Username"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="email">Email</label>
+              <input
+                className="w-full"
+                id="email"
+                name="email"
+                type="text"
+                placeholder="Your email"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="form-label" htmlFor="password">Password</label>
+              <input
+                className="w-full is-error"
+                id="password"
+                name="password"
+                type="password"
+                placeholder="******************"
+                onChange={this.handleChange}
+              />
+              <p className="label-message is-error">Please choose a password.</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <button
+                className="is-primary"
+                type="button"
+                onClick={this.handleLogin}
+              >Sign In</button>
+              <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/">
+                Forgot Password?
+              </a>
+            </div>
+          </form>
+          <Copyright className="text-center text-xs" />
         </div>
-      </MainLayout>
+      </AuthLayout>
     );
   }
 }

@@ -1,10 +1,10 @@
 import express from 'express';
 import _ from 'lodash';
 import { validationResult } from 'express-validator';
-import Post from '../models/Post';
-import parseErrors from '../utils/parseErrors';
-import validate from '../validates/index';
-import postValidate from '../validates/post';
+import Post from '../../models/Post';
+import parseErrors from '../../utils/parseErrors';
+import validate from '../../validates/index';
+import postValidate from '../../validates/post';
 
 const router = express.Router();
 

@@ -1,29 +1,42 @@
-.LazyLoad {
-  background: #ddd;
-}
+$primary-color: #4099de;
+$body-color: #333;
+$heading-color: #333;
 
-.t-vlog-poster {
+/* TVlogPoster */
+.tvlog-poster {
+  /* =========================== TVlogPoster: General Style =========================== */
   position: relative;
-  padding-top: 50px;
-  background: #f6f6f7;
-}
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #e1e4e8;
+  box-sizing: border-box;
+  background: #fafbfc;
 
-/* Based on Sublime Text's T-Vlog theme */
-.t-vlog-poster {
+  /* =========================== TVlogPoster: Controls Style =========================== */
   .markdown-controls {
-    color: #333;
+    color: $body-color;
     width: 100%;
-    padding: 4px 15px;
-    background: #f6f6f7;
-    border-bottom: 1px solid #bbb;
+    padding: 6px 15px;
+    background: #fafbfc;
+    border-bottom: 1px solid #e1e4e8;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 5;
 
     legend {
-      color: #333;
+      color: $body-color;
+      border-bottom: 0;
+      font-size: 1.25em;
+      margin: 0;
+      padding: 10px 0 0 0;
     }
 
     form {
       margin: 0;
       background: #f6f6f7;
+
+      background-color: rgba(39, 40, 34, 0.5);
+      margin-right: 20px;
     }
 
     fieldset {
@@ -32,300 +45,290 @@
       }
     }
   }
+
+  .tvlog-poster__editor--controls {
+
+  }
+
+  .tvlog-poster__preview--controls {
+    text-align: right;
+    float: right;
+  }
+
+  .tvlog-poster__editor,
+  .tvlog-poster__preview {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    display: inline-block;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .tvlog-poster__editor {
+    left: 0;
+    float: left;
+  }
+
+  .tvlog-poster__preview {
+    left: auto;
+    right: 0;
+    float: right;
+    border-left: 1px solid #e1e4e8;
+  }
+
+  .tvlog-poster__editor--content,
+  .tvlog-poster__preview--content {
+    position: relative;
+    padding: 0 15px;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .tvlog-poster__preview--content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
 }
 
-.cm-s-t-vlog {
-  &.CodeMirror {
-    padding-top: 70px;
+/* =========================== TVlogPoster: Editor Style =========================== */
+.tvlog-poster__editor--content {
+  textarea {
+    padding: 20px;
+    min-height: 500px;
+  }
+
+  .CodeMirror {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    font-size: 16px;
     background: #fff;
-    color: #333;
-  }
+    color: $body-color;
 
-  div {
-    &.CodeMirror-selected {
-      background: #49483E;
-    }
-  }
-
-  .CodeMirror-line {
-    &::selection,
-    > span::selection,
-    > span > span::selection {
-      background: rgba(189, 186, 218, .7);
-    }
-
-    &::-moz-selection,
-    > span::-moz-selection,
-    > span > span::-moz-selection {
-      background: rgba(189, 186, 218, .7);
-    }
-  }
-
-  .CodeMirror-gutters {
-    background: #272822;
-    border-right: 0px;
-  }
-
-  .CodeMirror-guttermarker {
-    color: white;
-  }
-
-  .CodeMirror-guttermarker-subtle {
-    color: #d0d0d0;
-  }
-
-  .CodeMirror-linenumber {
-    color: #d0d0d0;
-  }
-
-  .CodeMirror-cursor {
-    border-left: 1px solid #222;
-  }
-
-  span {
-    &.cm-comment {
-      color: #75715e;
-    }
-
-    &.cm-atom {
-      color: #ae81ff;
-    }
-
-    &.cm-number {
-      color: #ae81ff;
-    }
-
-    &.cm-comment {
-      &.cm-attribute {
-        color: #97b757;
+    &.cm-s-tvlog {
+      div {
+        &.CodeMirror-selected {
+          background: #49483E;
+        }
       }
 
-      &.cm-def {
-        color: #bc9262;
+      .CodeMirror-line {
+        &::selection,
+        > span::selection,
+        > span > span::selection {
+          background: rgba(189, 186, 218, .7);
+        }
+
+        &::-moz-selection,
+        > span::-moz-selection,
+        > span > span::-moz-selection {
+          background: rgba(189, 186, 218, .7);
+        }
       }
 
-      &.cm-tag {
-        color: #bc6283;
+      .CodeMirror-gutters {
+        background: #272822;
+        border-right: 0px;
       }
 
-      &.cm-type {
-        color: #5998a6;
+      .CodeMirror-guttermarker {
+        color: white;
+      }
+
+      .CodeMirror-guttermarker-subtle {
+        color: #d0d0d0;
+      }
+
+      .CodeMirror-linenumber {
+        color: #d0d0d0;
+      }
+
+      .CodeMirror-cursor {
+        border-left: 1px solid #222;
+      }
+
+      span {
+        &.cm-comment {
+          color: #3F51B5;
+        }
+
+        &.cm-atom {
+          color: #ae81ff;
+        }
+
+        &.cm-number {
+          color: #ae81ff;
+        }
+
+        &.cm-comment {
+          &.cm-attribute {
+            color: #97b757;
+          }
+
+          &.cm-def {
+            color: #bc9262;
+          }
+
+          &.cm-tag {
+            color: #bc6283;
+          }
+
+          &.cm-type {
+            color: #5998a6;
+          }
+        }
+
+        &.cm-property,
+        &.cm-attribute {
+          color: #a6e22e;
+        }
+
+        &.cm-keyword { color: #f92672; }
+        &.cm-builtin { color: #66d9ef; }
+        &.cm-string { color: #e6db74; }
+        &.cm-variable { color: #f8f8f2; }
+        // &.cm-variable-2 { color: #9effff; }
+        &.cm-variable-3, &.cm-type { color: #66d9ef; }
+        &.cm-def { color: #fd971f; }
+        &.cm-bracket { color: #f8f8f2; }
+        &.cm-tag { color: #f92672; }
+        &.cm-header { color: $heading-color; }
+        &.cm-link { color: $primary-color; }
+        &.cm-error { background: #f92672; color: #f8f8f0; }
+      }
+
+      .CodeMirror-activeline-background {
+        background: #373831;
+      }
+
+      .CodeMirror-matchingbracket {
+        text-decoration: underline;
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+/* =========================== TVlogPoster: Preview Style =========================== */
+.tvlog-poster__preview--content {
+  .hljs {
+    background: #edf2f7;
+  }
+
+  code[class*=language-],
+  pre[class*=language-] {
+    font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    -webkit-font-smoothing: auto!important;
+    -moz-osx-font-smoothing: auto!important;
+    -webkit-overflow-scrolling: touch!important
+  }
+
+  pre {
+    border: 1px solid #e2e8f0;
+  }
+
+  pre[class*=language-],
+  pre > .hljs {
+    padding: 1rem;
+    overflow: auto;
+  }
+
+  :not(pre)>code[class*=language-],
+  pre[class*=language-] {
+    font-size: .875rem;
+  }
+
+  :not(pre)>code[class*=language-] {
+    padding: .15em;
+    border-radius: .3em;
+    display: inline;
+  }
+
+  code,
+  pre {
+    &.language-js {
+      .token.operator {
+        color: var(--color-code-blue)!important;
+      }
+
+      .token.punctuation {
+        color: var(--color-code-white)!important;
+      }
+
+      .token.boolean {
+        color: var(--color-code-red)!important;
+      }
+
+      .token.keyword {
+        color: var(--color-code-white)!important;
+      }
+
+      .token.regex {
+        color: var(--color-code-yellow)!important;
       }
     }
 
-    &.cm-property,
-    &.cm-attribute {
-      color: #a6e22e;
+    &.language-bash {
+      .token.function {
+        color: var(--color-code-white)!important;
+      }
     }
 
-    &.cm-keyword { color: #f92672; }
-    &.cm-builtin { color: #66d9ef; }
-    &.cm-string { color: #e6db74; }
-    &.cm-variable { color: #f8f8f2; }
-    &.cm-variable-2 { color: #9effff; }
-    &.cm-variable-3, &.cm-type { color: #66d9ef; }
-    &.cm-def { color: #fd971f; }
-    &.cm-bracket { color: #f8f8f2; }
-    &.cm-tag { color: #f92672; }
-    &.cm-header { color: #ae81ff; }
-    &.cm-link { color: #ae81ff; }
-    &.cm-error { background: #f92672; color: #f8f8f0; }
+    &.language-diff {
+      color: #cbd5e0!important;
+
+      .token {
+        &.deleted {
+          color: var(--color-code-red)!important;
+        }
+
+        &.inserted {
+          color: var(--color-code-green)!important
+        }
+      }
+    }
   }
 
-  .CodeMirror-activeline-background {
-    background: #373831;
+  blockquote {
+    color: #666;
+    margin: 0;
+    padding-left: 3em;
+    border-left: 0.5em #eee solid;
   }
 
-  .CodeMirror-matchingbracket {
-    text-decoration: underline;
-    color: #fff !important;
+  tr {
+    border-top: 1px solid #c6cbd1;
+    background: #fff;
   }
-}
 
-.editor-pane {
-  position: relative;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 50%;
-  height: 100vh;
-  overflow: auto;
-  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.4);
-}
+  th,
+  td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+  }
 
-.result-pane > div {
-  position: absolute;
-  top: 57px;
-  right: 0;
-  left: 50%;
-  bottom: 0;
-  overflow: auto;
-  padding: 10px;
-  padding-left: 20px;
-  color: #444;
-}
-
-.editor textarea {
-  padding: 20px;
-}
-
-.editor-pane textarea {
-  min-height: 500px;
-}
-
-.markdown-controls {
-  position: relative;
-  z-index: 5;
-  text-align: right;
-  color: #fff;
-  float: right;
-}
-
-.markdown-controls form {
-  background-color: rgba(39, 40, 34, 0.5);
-  margin-right: 20px;
-}
-
-.markdown-controls legend {
-  border-bottom: 0;
-  color: #fff;
-  font-size: 1.25em;
-  margin: 0;
-  padding: 10px 0 0 0;
-}
-
-.CodeMirror {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: auto;
-  height: auto;
-
-  font-size: 16px;
-}
-
-pre {
-  border: 1px solid #e2e8f0;
-}
-
-blockquote {
-  color: #666;
-  margin: 0;
-  padding-left: 3em;
-  border-left: 0.5em #eee solid;
-}
-
-tr {
-  border-top: 1px solid #c6cbd1;
-  background: #fff;
-}
-
-th,
-td {
-  padding: 6px 13px;
-  border: 1px solid #dfe2e5;
-}
-
-table tr:nth-child(2n) {
-  background: #f6f8fa;
-}
-
-.hljs {
-  padding: 1em;
-  background: #edf2f7;
-}
-
-code[class*=language-],
-pre[class*=language-] {
-  font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  // color: #edf2f7;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none
-}
-
-pre[class*=language-] {
-  padding: 1rem;
-  overflow: auto;
-  border-radius: .3em
-}
-
-:not(pre)>code[class*=language-],
-pre[class*=language-] {
-  background: #1d1f21
-}
-
-:not(pre)>code[class*=language-] {
-  padding: .1em;
-  border-radius: .3em
-}
-
-:not(pre)>code[class*=language-],
-pre[class*=language-] {
-  background: transparent;
-  font-size: .875rem
-}
-
-// code[class*=language-],
-// pre[class*=language-] {
-//   -webkit-font-smoothing: auto!important;
-//   -moz-osx-font-smoothing: auto!important;
-//   color: var(--color-code-white)!important;
-//   -webkit-overflow-scrolling: touch!important
-// }
-
-code.language-js .token.operator,
-pre.language-js .token.operator {
-  color: var(--color-code-blue)!important
-}
-
-code.language-js .token.punctuation,
-pre.language-js .token.punctuation {
-  color: var(--color-code-white)!important
-}
-
-code.language-js .token.boolean,
-pre.language-js .token.boolean {
-  color: var(--color-code-red)!important
-}
-
-code.language-js .token.keyword,
-pre.language-js .token.keyword {
-  color: var(--color-code-white)!important
-}
-
-code.language-js .token.regex,
-pre.language-js .token.regex {
-  color: var(--color-code-yellow)!important
-}
-
-code.language-bash .token.function,
-pre.language-bash .token.function {
-  color: var(--color-code-white)!important
-}
-
-code.language-diff,
-pre.language-diff {
-  color: #cbd5e0!important
-}
-
-code.language-diff .token.deleted,
-pre.language-diff .token.deleted {
-  color: var(--color-code-red)!important
-}
-
-code.language-diff .token.inserted,
-pre.language-diff .token.inserted {
-  color: var(--color-code-green)!important
+  table {
+    tr:nth-child(2n) {
+      background: #f6f8fa;
+    }
+  }
 }

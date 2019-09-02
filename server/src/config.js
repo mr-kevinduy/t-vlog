@@ -11,15 +11,16 @@ const config = {
     fallbackLocale: process.env.I18N_FALLBACK_LOCALE || 'en'
   },
   client: {
+    host: process.env.CLIENT_HOST || 'http://localhost:3000',
     port: process.env.CLIENT_PORT || 3000,
     server: process.env.CLIENT_PORT || 8080
   },
   services: {
     api: {
-      url: process.env.SERVER_URL || 'localhost',
+      host: process.env.SERVER_URL || 'http://localhost',
       port: process.env.SERVER_PORT || 8000,
       authSecret: process.env.JWT_SECRET || 'secretkeyhere',
-      endPoint: '/api/v1'
+      endPoint: '/api'
     },
     firebase: {
       apiKey: 'AIzaSyAkCXP3-sAbRTopcxSMHLrI-DWKclIKYHc',
@@ -39,6 +40,12 @@ const config = {
       host: '52.1.253.106',
       port: '9200',
       log: 'trace'
+    },
+    mailer: {
+      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+      port: process.env.EMAIL_PORT || 465,
+      user: process.env.EMAIL_USER || 'mr.kevinduy@gmail.com',
+      pass: process.env.EMAIL_PASS || 'dlukasynqivshozd'
     }
   },
   database: {

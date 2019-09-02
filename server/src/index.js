@@ -2,6 +2,9 @@ import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import passport from 'passport';
+import passportMiddleware from './middlewares/passport';
+import User from './models/User';
 
 import { appConfig, servicesConfig, dbConfig } from './config';
 import routes from './routes';
@@ -19,6 +22,8 @@ if (!isProduction) {
   mongoose.set('debug', true);
 }
 
+// Passport configs
+passport.use(passportMiddleware);
 
 // Start app
 const app = express();

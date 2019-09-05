@@ -13,10 +13,11 @@ router.post('/', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  const { username, email, password } = req.body.user;
+  const { username, email, password, fullname } = req.body.user;
   const user = new User({
     username,
-    email
+    email,
+    fullname
   });
 
   user.setPassword(password);

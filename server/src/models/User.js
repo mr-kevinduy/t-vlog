@@ -22,13 +22,9 @@ const schema = new mongoose.Schema({
     match: [/\S+@\S+\.\S+/, 'is invalid'],
     index: true
   },
-  // bio: String,
-  // image: String,
-  // favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
-  // following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   hash: String,
   salt: String,
-  confirmed: { type: Boolean, default: false },
+  emailVerified: { type: Boolean, default: false },
   confirmationToken: { type: String, default: '' }
 }, { timestamps: true });
 

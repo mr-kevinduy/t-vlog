@@ -1,5 +1,5 @@
 import axios from 'axios';
-import firebase from './firebase';
+// import firebase from './firebase';
 
 export default class Service {
   /**
@@ -9,10 +9,11 @@ export default class Service {
    * @param  {object} socketOpts socket options
    * @return {void}
    */
-  constructor(instanceId, vm, socketOpts) {
+  constructor(baseUrl, instanceId = null) {
+    this.baseUrl = baseUrl;
     this.instanceId = instanceId;
     this.axios = axios.create({
-      baseURL: `/api/${instanceId}/`,
+      baseURL: instanceId !== null ? `/${baseUrl}/${instanceId}/` : `/${baseUrl}/`,
       responseType: "json"
     });
   }
@@ -23,22 +24,34 @@ export default class Service {
    * @param  {object} params parameters for request
    * @return {Promise}
    */
-  query(action, params) {
+  query(action, params, method = 'get') {
     return new Promise((resolve, reject) => {
-      this.axios.request(action, {
-        method: "post",
+      return this.axios.request(action, {
+        method,
         data: params
       }).then((response) => {
-        if (response.data && response.data.data)
-          resolve(response.data.data);
+        console.log('Service res: ', response);
+        if (response.data && response.data.payload)
+          resolve({ status: 1, payload: response.data.payload });
         else
-          reject(response);
+          reject({ status: 1, payload: null });
       }).catch((error) => {
-        if (error.response && error.response.data && error.response.data.error) {
-          console.error("REST request error!", error.response.data.error);
-          reject(error.response.data.error);
-        } else
-          reject(error);
+        if (error.response && error.response.data && error.response.data.errors) {
+          // console.log('error.response', JSON.stringify(error.response.data.errors));
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          reject({ status: 0, errors: error.response.data.errors });
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log('error.request');
+          reject({ status: 0, errors: error.request });
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('error.message');
+          reject({ status: 0, errors: error.message });
+        }
       });
     });
   }

@@ -12,12 +12,12 @@ router.post('/', (req, res) => {
 
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', (req, res, next) => {
   const { username, email, password, fullname } = req.body.user;
+
   const user = new User({
     username,
-    email,
-    fullname
+    email
   });
 
   user.setPassword(password);
@@ -25,10 +25,10 @@ router.post('/register', (req, res) => {
   user
     .save()
     .then(user => {
-      sendConfirmationEmail(user);
-      return res.json({ user: user.toAuthJSON()});
+      // sendConfirmationEmail(user);
+      return res.json({ payload: user.toAuthJSON()});
     })
-    .catch(err => res.status(404).json({ errors: parseErrors(err.errors), errs: err }));
+    .catch(err => res.status(404).json({ errors: parseErrors(err.errors) }));
 });
 
 router.post('/login', (req, res, next) => {
@@ -42,7 +42,7 @@ router.post('/login', (req, res, next) => {
 
     if (user) {
       user.token = user.generateJWT();
-      return res.json({ user: user.toAuthJSON() });
+      return res.json({ payload: user.toAuthJSON() });
     } else {
       return res.status(422).json(info);
     }
@@ -56,7 +56,7 @@ router.post('/confirmation', (req, res) => {
     { confirmationToken: token },
     { confirmationToken: "", confirmed: true },
     { new: true }
-  ).then(user => user ? res.json({ user: user.toAuthJSON() }) : res.status(400).json({}));
+  ).then(user => user ? res.json({ payload: user.toAuthJSON() }) : res.status(400).json({}));
 });
 
 router.post('/reset_password', (req, res) => {

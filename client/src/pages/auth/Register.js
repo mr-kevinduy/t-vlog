@@ -1,5 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { registerAuth } from '../../services/api/auth';
+import FormInput from '../../components/form/FormInput';
 import AuthLayout from '../../layouts/AuthLayout';
 import Copyright from '../../common/Copyright';
 
@@ -8,14 +10,36 @@ class RegisterPage extends React.Component {
     super(props);
 
     this.state = {
+      form: {
+        username: '',
+        email: '',
+        password: ''
+      },
+      errors: null,
       redirectToLogin: false
     };
   }
 
-  handleRegister = (e) => {
+  handleChange = e => {
+    let { name, value } = e.target;
+
+    this.setState({
+      ...this.state,
+      form: { ...this.state.form, [name]: value }
+    });
+  }
+
+  handleRegister = async (e) => {
     e.preventDefault();
 
-    console.log('Registed!');
+    const { username, email, password } = this.state.form;
+    const res = await registerAuth(username, email, password);
+
+    if (res && res.status) {
+      console.log('Register!!!');
+    } else {
+      this.setState({ errors: res.errors });
+    }
   }
 
   handleLogin = (e) => {
@@ -25,7 +49,7 @@ class RegisterPage extends React.Component {
   }
 
   render() {
-    const { redirectToLogin } = this.state;
+    const { redirectToLogin, errors } = this.state;
 
     if (redirectToLogin) return <Redirect to='/login' />;
 
@@ -35,39 +59,52 @@ class RegisterPage extends React.Component {
           <form className="bg-white shadow-md rounded px-8 py-8 mb-4">
             <h1 className="mb-10 text-center">Register</h1>
             <div className="mb-4">
-              <label className="form-label" htmlFor="username">Username</label>
-              <input
+              <FormInput
                 className="w-full"
-                id="username"
-                type="text"
+                label="Username"
+                name="username"
                 placeholder="Username"
+                onChange={this.handleChange}
+                error={ errors && 'username' in errors ? errors.username : null }
+              />
+            </div>
+            <div className="mb-4">
+              <FormInput
+                className="w-full"
+                label="Email"
+                name="email"
+                placeholder="Your email"
+                onChange={this.handleChange}
+                error={ errors && 'email' in errors ? errors.email : null }
               />
             </div>
             <div className="mb-6">
-              <label className="form-label" htmlFor="password">Password</label>
-              <input
+              <FormInput
                 className="w-full"
-                id="password"
+                label="Password"
+                name="password"
                 type="password"
                 placeholder="******************"
+                onChange={this.handleChange}
+                error={ errors && 'password' in errors ? errors.password : null }
               />
-              <p className="text-red-500 text-xs italic">Please choose a password.</p>
             </div>
             <div className="mb-6">
-              <label className="form-label" htmlFor="repeatPassword">Repeat Password</label>
-              <input
+              <FormInput
                 className="w-full"
-                id="repeatPassword"
+                label="Repeat Password"
+                name="repeatPassword"
                 type="password"
                 placeholder="******************"
+                onChange={this.handleChange}
+                error={ errors && 'repeatPassword' in errors ? errors.repeatPassword : null }
               />
-              <p className="text-red-500 text-xs italic">Please choose a password.</p>
             </div>
             <div className="flex items-center justify-between">
               <button
                 className="is-primary"
                 type="button"
-                onClick={this.handleRegisrer}
+                onClick={this.handleRegister}
               >Register</button>
               <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/">
                 Forgot Password?

@@ -1,0 +1,18 @@
+// Form
+.message {
+  &.is-info {
+    color: $info-color;
+  }
+
+  &.is-error {
+    color: $error-color;
+  }
+
+  &.is-warning {
+    color: $warning-color;
+  }
+
+  &.is-success {
+    color: $success-color;
+  }
+}

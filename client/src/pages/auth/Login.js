@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { loginAuth } from '../../services/api/auth';
 import AuthLayout from '../../layouts/AuthLayout';
 import Copyright from '../../common/Copyright';
 
@@ -30,10 +31,11 @@ class LoginPage extends React.Component {
   handleLogin = e => {
     e.preventDefault();
 
-    const { username, email, password } = this.state.form;
+    const { email, password } = this.state.form;
 
-    axios
-      .post('/api/v1/auth/login', { user: { username, email, password } })
+    // axios
+    //   .post('/api/v1/auth/login', { user: { username, email, password } })
+    loginAuth(email, password)
       .then(res => {
         console.log('Loged: ', this.props.history);
         // Set token to local: setUserInfo

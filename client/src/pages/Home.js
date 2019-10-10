@@ -1,8 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getUsers } from '../services/api/users';
 import FullLayout from '../layouts/FullLayout';
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: null
+    }
+  }
+
+  componentDidMount() {
+    getUsers().then(res => console.log('Home get: ', res));
+  }
+
   render() {
     return (
       <FullLayout title="Home page" description="This is home page.">

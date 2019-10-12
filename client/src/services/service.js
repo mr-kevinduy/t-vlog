@@ -55,4 +55,12 @@ export default class Service {
       });
     });
   }
+
+  setAuthorizationHeader(token = null) {
+    if (token) {
+      this.axios.defaults.headers.common.authorization = `Bearer ${token}`;
+    } else {
+      delete this.axios.defaults.headers.common.authorization;
+    }
+  }
 }

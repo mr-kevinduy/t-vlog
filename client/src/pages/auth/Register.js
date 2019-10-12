@@ -13,7 +13,8 @@ class RegisterPage extends React.Component {
       form: {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        repeatPassword: ''
       },
       errors: null,
       redirectToLogin: false
@@ -32,12 +33,13 @@ class RegisterPage extends React.Component {
   handleRegister = async (e) => {
     e.preventDefault();
 
-    const { username, email, password } = this.state.form;
-    const res = await registerAuth(username, email, password);
+    const { username, email, password, repeatPassword } = this.state.form;
+    const res = await registerAuth(username, email, password, repeatPassword);
 
     if (res && res.status) {
-      console.log('Register!!!');
+      this.props.history.push('/login');
     } else {
+      console.log(res);
       this.setState({ errors: res.errors });
     }
   }

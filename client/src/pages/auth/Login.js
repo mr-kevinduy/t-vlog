@@ -2,6 +2,7 @@ import React from 'react';
 // import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { loginAuth } from '../../services/api/auth';
+import FormInput from '../../components/form/FormInput';
 import AuthLayout from '../../layouts/AuthLayout';
 import Copyright from '../../common/Copyright';
 
@@ -11,10 +12,10 @@ class LoginPage extends React.Component {
 
     this.state = {
       form: {
-        username: '',
         email: '',
         password: ''
       },
+      errors: null,
       redirectToRegister: false
     };
   }
@@ -28,21 +29,23 @@ class LoginPage extends React.Component {
     });
   }
 
-  handleLogin = e => {
+  handleLogin = async (e) => {
     e.preventDefault();
 
     const { email, password } = this.state.form;
 
-    // axios
-    //   .post('/api/v1/auth/login', { user: { username, email, password } })
-    loginAuth(email, password)
-      .then(res => {
-        console.log('Loged: ', this.props.history);
-        // Set token to local: setUserInfo
-        // Set setAuthorizationHeader: /services/auth.service.js
-        this.props.history.push('/');
-        console.log('Loged success!!', res);
-      });
+    const res = await loginAuth(email, password);
+
+    if (res && res.status) {
+      console.log('Loged: ', this.props.history);
+      // Set token to local: setUserInfo
+      // Set setAuthorizationHeader: /services/auth.service.js
+      this.props.history.push('/');
+      console.log('Loged success!!', res);
+    } else {
+      console.log(res);
+      this.setState({ errors: res.errors });
+    }
   }
 
   handleRegister = e => {
@@ -52,7 +55,7 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    const { redirectToRegister } = this.state;
+    const { redirectToRegister, errors } = this.state;
 
     if (redirectToRegister) return <Redirect to='/register' />;
 
@@ -62,38 +65,25 @@ class LoginPage extends React.Component {
           <form className="bg-white shadow-md rounded px-8 py-8 mb-4">
             <h1 className="mb-10 text-center">Login to website</h1>
             <div className="mb-4">
-              <label className="form-label" htmlFor="username">Username</label>
-              <input
+              <FormInput
                 className="w-full"
-                id="username"
-                name="username"
-                type="text"
-                placeholder="Your Username"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="mb-4">
-              <label className="form-label" htmlFor="email">Email</label>
-              <input
-                className="w-full"
-                id="email"
+                label="Email"
                 name="email"
-                type="text"
                 placeholder="Your email"
                 onChange={this.handleChange}
+                error={ errors && 'email' in errors ? errors.email : null }
               />
             </div>
             <div className="mb-6">
-              <label className="form-label" htmlFor="password">Password</label>
-              <input
-                className="w-full is-error"
-                id="password"
+              <FormInput
+                className="w-full"
+                label="Password"
                 name="password"
                 type="password"
                 placeholder="******************"
                 onChange={this.handleChange}
+                error={ errors && 'password' in errors ? errors.password : null }
               />
-              <p className="label-message is-error">Please choose a password.</p>
             </div>
             <div className="flex items-center justify-between">
               <button

@@ -4,6 +4,7 @@ import { Frontload } from 'react-frontload';
 import { BrowserRouter } from 'react-router-dom';
 // import { ConnectedRouter } from 'connected-react-router';
 // import { createBrowserHistory, createMemoryHistory } from 'history';
+// import 'localstorage-polyfill';
 import './assets/sass/index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

@@ -13,7 +13,13 @@ router.post('/', (req, res) => {
 });
 
 router.post('/register', (req, res, next) => {
-  const { username, email, password, fullname } = req.body.user;
+  const { username, email, password, repeatPassword, fullname } = req.body.user;
+
+  if (!username) return res.status(422).json({ errors: { username: "can't be blank" } });
+  if (!email) return res.status(422).json({ errors: { email: "can't be blank" } });
+  if (!password) return res.status(422).json({ errors: { password: "can't be blank" } });
+  if (!repeatPassword) return res.status(422).json({ errors: { repeatPassword: "can't be blank" } });
+  if (password !== repeatPassword) return res.status(422).json({ errors: { repeatPassword: "Must same password." } });
 
   const user = new User({
     username,
@@ -32,7 +38,7 @@ router.post('/register', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-  const { username, email, password } = req.body.user;
+  const { email, password } = req.body.user;
 
   if (!email) return res.status(422).json({ errors: { email: "can't be blank" } });
   if (!password) return res.status(422).json({ errors: { password: "can't be blank" } });

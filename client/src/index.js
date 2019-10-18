@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Frontload } from 'react-frontload';
 import { BrowserRouter } from 'react-router-dom';
+import { apiService } from './services/api/index';
 // import { ConnectedRouter } from 'connected-react-router';
 // import { createBrowserHistory, createMemoryHistory } from 'history';
 // import 'localstorage-polyfill';
@@ -28,6 +29,12 @@ import * as serviceWorker from './serviceWorker';
 //     </Frontload>
 //   </ConnectedRouter>
 // );
+//
+
+// Set token
+if (localStorage.getItem('access_token')) {
+  apiService.setAuthorizationHeader(localStorage.getItem('access_token'));
+}
 
 const Application = (
   <Frontload noServerRender={true}>

@@ -2,6 +2,9 @@ import axios from 'axios';
 // import firebase from './firebase';
 
 export default class Service {
+  // static _instance = null;
+  baseUrl = null;
+
   /**
    * constructor
    * @param  {string} instanceId a instance of api
@@ -9,14 +12,23 @@ export default class Service {
    * @param  {object} socketOpts socket options
    * @return {void}
    */
-  constructor(baseUrl, instanceId = null) {
+  constructor(baseUrl) {
+    // this.setInstance();
+
     this.baseUrl = baseUrl;
-    this.instanceId = instanceId;
     this.axios = axios.create({
-      baseURL: instanceId !== null ? `/${baseUrl}/${instanceId}/` : `/${baseUrl}/`,
+      baseURL: `/${baseUrl}`,
       responseType: "json"
     });
   }
+
+  // static setInstance() {
+  //   if(_instance){
+  //     return _instance;
+  //   }
+
+  //   this._instance = this;
+  // }
 
   /**
    * Call a service action via REST API
@@ -62,5 +74,9 @@ export default class Service {
     } else {
       delete this.axios.defaults.headers.common.authorization;
     }
+  }
+
+  getHeaders() {
+    return this.axios.defaults.headers;
   }
 }

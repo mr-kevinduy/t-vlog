@@ -1,7 +1,10 @@
-import { userService } from './index';
+import { apiService } from './index';
+
+// export const userService = apiService.setInstanceID('users');
 
 export const getUsers = async () => {
-  return await userService.query('/', {}, 'get')
+  console.log(apiService.getHeaders());
+  return await apiService.query('/users', {}, 'get')
     .then(res => {
       // setUserInfo({ access_token: res.payload, refresh_token: '', user_info: res.payload });
       console.log('getUsers: ', res);

@@ -2,7 +2,9 @@ import { isObjectEmpty } from '../../utils/common';
 // import { setUserInfo } from '../../utils/storage';
 import validRegister from '../validate/register';
 import validLogin from '../validate/login';
-import { authService } from './index';
+import { apiService } from './index';
+
+// export const authService = apiService.setInstanceID('auth');
 
 export const registerAuth = async (username, email, password, repeatPassword, fullname = '') => {
   const errors = validRegister({ username, email, password, repeatPassword });
@@ -10,16 +12,13 @@ export const registerAuth = async (username, email, password, repeatPassword, fu
   if (!isObjectEmpty(errors)) return ({
     status: 0,
     errors
-  })
+  });
 
-  return await authService.query('register', {
+  return await apiService.query('auth/register', {
     user: { username, email, password, repeatPassword }
   }, 'post')
-    .then(res => ({
-      status: 1,
-      payload: res.payload
-    }))
-    .catch(errs => ({ errors: errs.errors }));
+    .then(res => res)
+    .catch(errs => ({ errors: errs }));
 }
 
 export const loginAuth = async (email, password) => {
@@ -30,19 +29,16 @@ export const loginAuth = async (email, password) => {
     errors
   })
 
-  return await authService.query('login', {
+  return await apiService.query('auth/login', {
     user: { email, password }
   }, 'post')
     .then(res => {
       // setUserInfo({ access_token: res.payload, refresh_token: '', user_info: res.payload });
       const { token, email, username } = res.payload;
       localStorage.setItem('access_token', token);
-      authService.setAuthorizationHeader(token);
-
-      return {
-        status: 1,
-        payload: res.payload
-      };
+      apiService.setAuthorizationHeader(token);
+      console.log('Login header set: ', apiService.getHeaders());
+      return res;
     })
-    .catch(errs => ({ errors: errs.errors }));
+    .catch(errs => ({ errors: errs }));
 }

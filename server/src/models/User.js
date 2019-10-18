@@ -9,7 +9,7 @@ const schema = new mongoose.Schema({
   username: {
     type: String,
     lowercase: true,
-    unique: [true, "this username is exist."],
+    unique: true,
     required: [true, "can't be blank"],
     match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
     index: true
@@ -65,5 +65,7 @@ schema.methods.toAuthJSON = function toAuthJSON() {
     token: this.generateJWT()
   };
 }
+
+schema.plugin(uniqueValidator, { message: 'This {PATH} is already taken.' });
 
 export default mongoose.model('User', schema);

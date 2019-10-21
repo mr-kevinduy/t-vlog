@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import appRoot from 'app-root-path';
 
 dotenv.config();
 
@@ -8,7 +9,14 @@ const config = {
     env: process.env.APP_ENV || 'production',
     timezone: process.env.TIMEZONE || 'UTC',
     locale: process.env.I18N_LOCALE || 'vi',
-    fallbackLocale: process.env.I18N_FALLBACK_LOCALE || 'en'
+    fallbackLocale: process.env.I18N_FALLBACK_LOCALE || 'en',
+    path: {
+      storage: `${appRoot}/storage`,
+      logs: `${appRoot}/storage/logs`,
+      uploads: `${appRoot}/storage/uploads`,
+      cache: `${appRoot}/storage/cache`,
+      sessions: `${appRoot}/storage/sessions`,
+    }
   },
   client: {
     host: process.env.CLIENT_HOST || 'http://localhost:3000',

@@ -1,14 +1,14 @@
 import express from 'express';
-import authMiddleware from '../../middlewares/auth';
+import Auth from '../../middlewares/auth';
 import User from '../../models/User';
 
 const router = express.Router();
 
-router.get('/', authMiddleware.required, (req, res, next) => {
+router.get('/', Auth.required, (req, res, next) => {
   User.find().then(payload => payload ? res.json({ payload }) : res.status(400).json({}));
 });
 
-router.delete('/:id', authMiddleware.required, (req, res) => {
+router.delete('/:id', Auth.required, (req, res) => {
   console.log(req.payload);
 });
 

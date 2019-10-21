@@ -1,0 +1,19 @@
+[2019-10-21 02:14:24] info: Server listening on port 8000
+[2019-10-21 08:45:11] info: Server listening on port 8000
+[2019-10-21 08:46:42] info: GET /robots.txt 200 5.163 ms - 140
+[2019-10-21 08:46:43] info: GET /api/v1/users 401 1.900 ms - 139
+[2019-10-21 09:10:55] info: POST /api/v1/auth/login 200 104.201 ms - 283
+[2019-10-21 09:10:55] info: GET /api/v1/users 200 11.143 ms - 5998
+[2019-10-21 09:14:02] info: GET /api/v1/users 401 0.523 ms - 139
+[2019-10-21 09:14:31] info: GET /api/v1/users 401 0.385 ms - 139
+[2019-10-21 09:14:43] info: POST /api/v1/auth/login 200 115.592 ms - 283
+[2019-10-21 09:14:43] info: GET /api/v1/users 304 6.904 ms - -
+[2019-10-21 09:15:11] info: GET /api/v1/users 401 0.403 ms - 139
+[2019-10-21 09:15:40] info: POST /api/v1/auth/login 200 60.642 ms - 283
+[2019-10-21 09:15:40] info: GET /api/v1/users 304 5.950 ms - -
+[2019-10-21 09:18:15] info: GET /api/v1/users 401 0.331 ms - 139
+[2019-10-21 09:18:19] info: GET /api/v1/users 401 0.524 ms - 139
+[2019-10-21 09:18:29] info: POST /api/v1/auth/login 200 83.287 ms - 283
+[2019-10-21 09:18:29] info: GET /api/v1/users 304 6.980 ms - -
+[2019-10-21 09:18:41] info: GET /api/v1/users 304 2.736 ms - -
+[2019-10-21 09:29:31] info: GET /api/v1/users 304 7.359 ms - -

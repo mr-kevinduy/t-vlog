@@ -10,7 +10,7 @@ function getTokenFromHeader(req) {
   return null;
 }
 
-const authMiddleware = {
+const Auth = {
   required: jwt({
     secret: servicesConfig.api.authSecret,
     userProperty: 'payload',
@@ -24,4 +24,4 @@ const authMiddleware = {
   })
 };
 
-export default authMiddleware;
+export default Auth;

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Frontload } from 'react-frontload';
 import { BrowserRouter } from 'react-router-dom';
+import { getToken } from './utils/store';
 import { apiService } from './services/api/index';
 // import { ConnectedRouter } from 'connected-react-router';
 // import { createBrowserHistory, createMemoryHistory } from 'history';
@@ -32,8 +33,9 @@ import * as serviceWorker from './serviceWorker';
 //
 
 // Set token
-if (localStorage.getItem('access_token')) {
-  apiService.setAuthorizationHeader(localStorage.getItem('access_token'));
+if (getToken('access_token')) {
+  console.log('Index token: ', getToken('access_token'));
+  apiService.setAuthorizationHeader(getToken('access_token'));
 }
 
 const Application = (

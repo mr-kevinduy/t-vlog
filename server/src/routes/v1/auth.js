@@ -2,7 +2,7 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
 import Logger from '../../middlewares/logger';
-import authMiddleware from '../../middlewares/auth';
+import Auth from '../../middlewares/auth';
 import User from '../../models/User';
 import parseErrors from '../../utils/parseErrors';
 import { sendConfirmationEmail } from '../../functions/mailer';
@@ -56,7 +56,7 @@ router.post('/register', (req, res, next) => {
       });
     })
     .catch(err => {
-      Logger.error(`System: Save to database error. Detail: ${JSON.stringify(parseErrors(err.errors))}`);
+      Logger.error(`<System> Save to database error. Detail: ${JSON.stringify(parseErrors(err.errors))}`);
 
       return res.status(404).json({
         status: 0,

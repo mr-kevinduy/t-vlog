@@ -1,12 +1,12 @@
-import appRoot from 'app-root-path';
 import { createLogger, transports, format } from 'winston';
+import { appConfig } from '../config';
 
 let nowDate = (new Date()).toISOString().slice(0,10);
 
 var options = {
   file: {
     level: 'info',
-    filename: `${appRoot}/logs/app-${nowDate}.log`,
+    filename: `${appConfig.path.logs}/app-${nowDate}.log`,
     handleExceptions: true,
     json: false,
     maxsize: 5242880, // 5MB

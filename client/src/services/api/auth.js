@@ -1,5 +1,5 @@
 import { isObjectEmpty } from '../../utils/common';
-// import { setUserInfo } from '../../utils/storage';
+import { setToken, setUserInfo } from '../../utils/store';
 import validRegister from '../validate/register';
 import validLogin from '../validate/login';
 import { apiService } from './index';
@@ -35,7 +35,8 @@ export const loginAuth = async (email, password) => {
     .then(res => {
       // setUserInfo({ access_token: res.payload, refresh_token: '', user_info: res.payload });
       const { token, email, username } = res.payload;
-      localStorage.setItem('access_token', token);
+
+      setToken(token);
       apiService.setAuthorizationHeader(token);
       console.log('Login header set: ', apiService.getHeaders());
       return res;

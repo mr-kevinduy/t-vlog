@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import Meta from '../common/Meta';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+import Header from '../frontend/common/Header';
+import Footer from '../frontend/common/Footer';
 
 class FullLayout extends React.Component {
   constructor(props) {

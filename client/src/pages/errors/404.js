@@ -1,5 +1,5 @@
 import React from 'react';
-import MainLayout from '../../layouts/MainLayout';
+import MainLayout from '../layouts/MainLayout';
 
 class Error404 extends React.Component {
   constructor(props) {

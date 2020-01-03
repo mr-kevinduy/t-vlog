@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import logo from '../assets/images/logo.svg';
+import logo from '../../assets/images/logo.svg';
 
 const SITE_URL =
   process.env.NODE_ENV === 'development'

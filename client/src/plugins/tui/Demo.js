@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import $ from 'jquery';
 import { Editor } from '@toast-ui/react-editor';
-import FullLayout from '../../layouts/FullLayout';
+import FullLayout from '../../pages/layouts/FullLayout';
 
 import 'codemirror/lib/codemirror.css';
 import 'tui-editor/dist/tui-editor.min.css';

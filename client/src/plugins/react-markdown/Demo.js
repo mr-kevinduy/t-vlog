@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import FullLayout from '../../layouts/FullLayout';
+import FullLayout from '../../pages/layouts/FullLayout';
 import TVlogEditor from './TVlogEditor';
 
 import { initialSource } from '../data';

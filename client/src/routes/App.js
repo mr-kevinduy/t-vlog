@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import LoginPage from './pages/auth/Login';
-import RegisterPage from './pages/auth/Register';
-import HomePage from './pages/Home';
-import AboutPage from './pages/About';
-import Error404 from './pages/errors/404';
+import LoginPage from '../pages/auth/Login';
+import RegisterPage from '../pages/auth/Register';
+import Error404 from '../pages/errors/404';
+import HomePage from '../pages/frontend/Home';
+import AboutPage from '../pages/frontend/About';
 
-import ReactMarkdownDemo from './plugins/react-markdown/Demo';
-import TUIEditorDemo from './plugins/tui/Demo';
+import ReactMarkdownDemo from '../plugins/react-markdown/Demo';
+import TUIEditorDemo from '../plugins/tui/Demo';
 
 class App extends Component {
   render() {

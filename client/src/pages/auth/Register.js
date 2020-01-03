@@ -2,8 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { registerAuth } from '../../services/api/auth';
 import FormInput from '../../components/form/FormInput';
-import AuthLayout from '../../layouts/AuthLayout';
-import Copyright from '../../common/Copyright';
+import Copyright from '../frontend/common/Copyright';
+import AuthLayout from '../layouts/AuthLayout';
 
 class RegisterPage extends React.Component {
   constructor(props) {

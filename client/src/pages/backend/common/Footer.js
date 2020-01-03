@@ -2,9 +2,9 @@ import React from 'react';
 
 import Copyright from './Copyright';
 
-import twitter from '../assets/images/twitter.min.svg';
-import github from '../assets/images/github.min.svg';
-import discord from '../assets/images/discord.min.svg';
+import twitter from '../../../assets/images/twitter.min.svg';
+import github from '../../../assets/images/github.min.svg';
+import discord from '../../../assets/images/discord.min.svg';
 
 class Footer extends React.Component {
   render() {

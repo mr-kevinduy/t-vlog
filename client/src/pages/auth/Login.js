@@ -91,6 +91,11 @@ class LoginPage extends React.Component {
                 type="button"
                 onClick={this.handleLogin}
               >Sign In</button>
+              <button
+                className="is-primary"
+                type="button"
+                onClick={this.handleRegister}
+              >Register</button>
               <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/">
                 Forgot Password?
               </a>

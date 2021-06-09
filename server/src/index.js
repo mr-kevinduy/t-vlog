@@ -17,7 +17,8 @@ const isProduction = appConfig.env === 'production';
 mongoose.connect(`${dbConfig.driver}://${dbConfig.url}:${dbConfig.port}/${dbConfig.name}`, {
   useNewUrlParser: true,
   useFindAndModify: false,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useUnifiedTopology: true
 });
 
 if (!isProduction) {

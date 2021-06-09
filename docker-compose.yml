@@ -28,7 +28,13 @@ services:
       - "gist.github.com:192.30.255.118"
   db:
     image: mongo:latest
+    restart: always
     ports:
       - "27017:27017"
     volumes:
-      - .docker/db:/data/db
+      - mongodata:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+volumes:
+  mongodata:

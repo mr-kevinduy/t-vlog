@@ -1,0 +1,8 @@
+[2020-06-25 04:57:01] info: Server listening on port 8000
+[2020-06-25 04:57:59] info: Server listening on port 8000
+[2020-06-25 04:59:55] info: GET /api/v1/users 401 6.846 ms - 139
+[2020-06-25 05:06:23] error: <System> Save to database error. Detail: {"username":"This username is already taken.","_id":"This _id is already taken.","email":"This email is already taken."}
+[2020-06-25 05:06:23] info: POST /api/v1/auth/register 404 140.412 ms - 189
+[2020-06-25 08:04:24] info: GET /api/v1/users 401 3.203 ms - 139
+[2020-06-25 08:04:45] info: POST /api/v1/auth/login 500 12.525 ms - 148
+[2020-06-25 08:04:51] info: POST /api/v1/auth/login 500 1.785 ms - 148
